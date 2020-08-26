@@ -77,6 +77,13 @@ public class MainFrm extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("退出系统");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				if(JOptionPane.showConfirmDialog(MainFrm.this, "确定退出系统？") == JOptionPane.OK_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
 		mntmNewMenuItem_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/exit.png")));
 		mntmNewMenuItem_1.setFont(new Font("宋体", Font.PLAIN, 14));
 		mntmNewMenuItem_1.setForeground(Color.BLACK);
@@ -97,8 +104,25 @@ public class MainFrm extends JFrame {
 		mntmNewMenuItem_3.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		mnNewMenu_1.add(mntmNewMenuItem_3);
 		
+		JMenu mnNewMenu_4 = new JMenu("菜品类别");
+		mnNewMenu_4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
+		menuBar.add(mnNewMenu_4);
+		
+		JMenuItem menuItem = new JMenuItem("添加类别");
+		menuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				addMealClass(ae);
+			}
+		});
+		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/classadd.png")));
+		mnNewMenu_4.add(menuItem);
+		
+		JMenuItem menuItem_1 = new JMenuItem("类别列表");
+		menuItem_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/classlist.png")));
+		mnNewMenu_4.add(menuItem_1);
+		
 		JMenu mnNewMenu_2 = new JMenu("订单管理");
-		mnNewMenu_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookTypeManager.png")));
+		mnNewMenu_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/cart.png")));
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("订单列表");
@@ -127,9 +151,16 @@ public class MainFrm extends JFrame {
 		setContentPane(contentPane);
 		
 		desktopPane = new JDesktopPane();
-		desktopPane.setBackground(new Color(0, 128, 128));
+		desktopPane.setBackground(new Color(255, 255, 255));
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 		setLocationRelativeTo(null);
+	}
+
+	protected void addMealClass(ActionEvent ae) {
+		// 添加菜品类别
+		MealClassAddFrm mealClassAddFrm = new MealClassAddFrm();
+		mealClassAddFrm.setVisible(true);
+		desktopPane.add(mealClassAddFrm);
 	}
 
 	protected void changePassword(ActionEvent ae) {
@@ -145,5 +176,4 @@ public class MainFrm extends JFrame {
 		infoString += "欢迎您";
 		JOptionPane.showMessageDialog(this, infoString);
 	}
-
 }

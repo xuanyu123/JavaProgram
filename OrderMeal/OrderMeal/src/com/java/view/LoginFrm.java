@@ -88,7 +88,7 @@ public class LoginFrm extends JFrame {
 		userTypeComboBox.setModel(new DefaultComboBoxModel(new UserType[] {UserType.ADMIN, UserType.ORDCUSTOMER, UserType.VIPCUSTOMER, UserType.EMPLOYEE}));
 		
 		JButton loginButton = new JButton("登陆");
-		loginButton.setBounds(103, 266, 66, 30);
+		loginButton.setBounds(74, 266, 95, 30);
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				loginAct(ae);
@@ -98,7 +98,7 @@ public class LoginFrm extends JFrame {
 		loginButton.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/login.png")));
 		
 		JButton resetButton = new JButton("重置");
-		resetButton.setBounds(210, 266, 66, 30);
+		resetButton.setBounds(210, 266, 85, 30);
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				resetValue(ae);
@@ -108,7 +108,7 @@ public class LoginFrm extends JFrame {
 		resetButton.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/reset.png")));
 		
 		JButton registerButton = new JButton("注册用户");
-		registerButton.setBounds(309, 266, 107, 30);
+		registerButton.setBounds(329, 266, 119, 30);
 		registerButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				registerAct(ae);

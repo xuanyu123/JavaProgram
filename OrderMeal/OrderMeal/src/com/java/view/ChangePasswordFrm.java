@@ -55,13 +55,13 @@ public class ChangePasswordFrm extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public ChangePasswordFrm() {
+		setIconifiable(true);
+		setClosable(true);
 		setTitle("修改密码");
 		setBounds(100, 100, 435, 312);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		setClosable(true);
-		setIconifiable(true);
 		
 		JLabel lblNewLabel = new JLabel("原密码：");
 		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 13));
