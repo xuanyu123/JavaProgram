@@ -31,18 +31,18 @@ public class MainFrm extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MainFrm frame = new MainFrm();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrm frame = new MainFrm(null, null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -60,7 +60,7 @@ public class MainFrm extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("系统设置");
-		mnNewMenu.setFont(new Font("宋体", Font.PLAIN, 14));
+		mnNewMenu.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		mnNewMenu.setIcon(new ImageIcon(MainFrm.class.getResource("/images/base.png")));
 		mnNewMenu.setForeground(Color.BLACK);
 		menuBar.add(mnNewMenu);
@@ -72,7 +72,7 @@ public class MainFrm extends JFrame {
 			}
 		});
 		mntmNewMenuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/modify.png")));
-		mntmNewMenuItem.setFont(new Font("宋体", Font.PLAIN, 14));
+		mntmNewMenuItem.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		mntmNewMenuItem.setForeground(Color.BLACK);
 		mnNewMenu.add(mntmNewMenuItem);
 		
@@ -85,22 +85,22 @@ public class MainFrm extends JFrame {
 			}
 		});
 		mntmNewMenuItem_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/exit.png")));
-		mntmNewMenuItem_1.setFont(new Font("宋体", Font.PLAIN, 14));
+		mntmNewMenuItem_1.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		mntmNewMenuItem_1.setForeground(Color.BLACK);
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenu mnNewMenu_1 = new JMenu("菜单管理");
-		mnNewMenu_1.setFont(new Font("宋体", Font.PLAIN, 14));
+		mnNewMenu_1.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		mnNewMenu_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/bookManager.png")));
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("菜单列表");
-		mntmNewMenuItem_2.setFont(new Font("宋体", Font.PLAIN, 14));
+		mntmNewMenuItem_2.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		mntmNewMenuItem_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/search1.png")));
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("菜单维护");
-		mntmNewMenuItem_3.setFont(new Font("宋体", Font.PLAIN, 14));
+		mntmNewMenuItem_3.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		mntmNewMenuItem_3.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		mnNewMenu_1.add(mntmNewMenuItem_3);
 		
@@ -117,7 +117,12 @@ public class MainFrm extends JFrame {
 		menuItem.setIcon(new ImageIcon(MainFrm.class.getResource("/images/classadd.png")));
 		mnNewMenu_4.add(menuItem);
 		
-		JMenuItem menuItem_1 = new JMenuItem("类别列表");
+		JMenuItem menuItem_1 = new JMenuItem("类别管理");
+		menuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				mealClassManage(ae);
+			}
+		});
 		menuItem_1.setIcon(new ImageIcon(MainFrm.class.getResource("/images/classlist.png")));
 		mnNewMenu_4.add(menuItem_1);
 		
@@ -154,6 +159,13 @@ public class MainFrm extends JFrame {
 		desktopPane.setBackground(new Color(255, 255, 255));
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 		setLocationRelativeTo(null);
+	}
+
+	protected void mealClassManage(ActionEvent ae) {
+		// 类别管理
+		MealClassManageFrm mealClassManageFrm = new MealClassManageFrm();
+		mealClassManageFrm.setVisible(true);
+		desktopPane.add(mealClassManageFrm);
 	}
 
 	protected void addMealClass(ActionEvent ae) {

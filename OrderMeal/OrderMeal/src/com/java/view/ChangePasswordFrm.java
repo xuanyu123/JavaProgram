@@ -173,6 +173,7 @@ public class ChangePasswordFrm extends JInternalFrame {
 						.addComponent(resetButton))
 					.addGap(26))
 		);
+		
 		contentPane.setLayout(gl_contentPane);
 		
 		if("系统管理员".equals(MainFrm.userType.getName())){

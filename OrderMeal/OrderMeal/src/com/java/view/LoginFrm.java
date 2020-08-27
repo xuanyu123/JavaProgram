@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
 import com.java.dao.AdminDao;
@@ -65,21 +66,21 @@ public class LoginFrm extends JFrame {
 		label.setFont(new Font("宋体", Font.BOLD, 20));
 		
 		JLabel label_1 = new JLabel("用户名：");
-		label_1.setBounds(103, 103, 80, 18);
+		label_1.setBounds(103, 109, 80, 18);
 		label_1.setFont(new Font("宋体", Font.PLAIN, 15));
 		label_1.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/userName.png")));
 		
 		JLabel label_2 = new JLabel("密  码：");
-		label_2.setBounds(103, 156, 81, 18);
+		label_2.setBounds(103, 162, 81, 18);
 		label_2.setFont(new Font("宋体", Font.PLAIN, 15));
 		label_2.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/password.png")));
 		
 		userNameTextField = new JTextField();
-		userNameTextField.setBounds(207, 92, 208, 41);
+		userNameTextField.setBounds(207, 103, 190, 30);
 		userNameTextField.setColumns(10);
 		
 		passwordTextField = new JTextField();
-		passwordTextField.setBounds(207, 145, 208, 41);
+		passwordTextField.setBounds(207, 156, 190, 30);
 		passwordTextField.setColumns(10);
 		
 		userTypeComboBox = new JComboBox();
