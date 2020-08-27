@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -67,7 +68,9 @@ public class MealClassManageFrm extends JInternalFrame {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("菜品类别管理");
-		setBounds(100, 100, 619, 416);
+		
+		setBounds(120, 100, 932, 543);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -75,12 +78,14 @@ public class MealClassManageFrm extends JInternalFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JLabel lblNewLabel = new JLabel("类别名称：");
+		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 18));
 		lblNewLabel.setIcon(new ImageIcon(MealClassManageFrm.class.getResource("/images/classname.png")));
 		
 		searchClassNameTextField = new JTextField();
 		searchClassNameTextField.setColumns(10);
 		
 		JButton searchButton = new JButton("查询");
+		searchButton.setFont(new Font("宋体", Font.PLAIN, 18));
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MealClass mealClass = new MealClass();
@@ -91,18 +96,23 @@ public class MealClassManageFrm extends JInternalFrame {
 		searchButton.setIcon(new ImageIcon(MealClassManageFrm.class.getResource("/images/search.png")));
 		
 		JLabel lblNewLabel_1 = new JLabel("类别名称：");
+		lblNewLabel_1.setFont(new Font("宋体", Font.PLAIN, 18));
 		lblNewLabel_1.setIcon(new ImageIcon(MealClassManageFrm.class.getResource("/images/classname.png")));
 		
 		editClassNameTextField = new JTextField();
+		editClassNameTextField.setFont(new Font("宋体", Font.PLAIN, 18));
 		editClassNameTextField.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("类别介绍：");
+		lblNewLabel_2.setFont(new Font("宋体", Font.PLAIN, 18));
 		lblNewLabel_2.setIcon(new ImageIcon(MealClassManageFrm.class.getResource("/images/classinfo.png")));
 		
 		editClassInfoTextArea = new JTextArea();
+		editClassInfoTextArea.setFont(new Font("Monospaced", Font.PLAIN, 18));
 		
 		// 修改按钮
 		JButton submitChangeButton = new JButton("修改");
+		submitChangeButton.setFont(new Font("宋体", Font.PLAIN, 18));
 		// 给修改按钮绑定行为事件
 		submitChangeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
@@ -112,6 +122,7 @@ public class MealClassManageFrm extends JInternalFrame {
 		submitChangeButton.setIcon(new ImageIcon(MealClassManageFrm.class.getResource("/images/confirm.png")));
 		
 		JButton submitDeleteButton = new JButton("删除");
+		submitDeleteButton.setFont(new Font("宋体", Font.PLAIN, 18));
 		submitDeleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				submitDeleteAct(ae);
@@ -120,54 +131,55 @@ public class MealClassManageFrm extends JInternalFrame {
 		submitDeleteButton.setIcon(new ImageIcon(MealClassManageFrm.class.getResource("/images/delete.png")));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap(159, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addGap(18)
+					.addComponent(searchClassNameTextField, GroupLayout.PREFERRED_SIZE, 264, GroupLayout.PREFERRED_SIZE)
+					.addGap(119)
+					.addComponent(searchButton)
+					.addGap(147))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(91)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblNewLabel)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(searchClassNameTextField, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
-							.addGap(71)
-							.addComponent(searchButton)
-							.addGap(82))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(82)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(lblNewLabel_2)
 									.addGap(18)
-									.addComponent(editClassInfoTextArea))
+									.addComponent(editClassInfoTextArea, GroupLayout.PREFERRED_SIZE, 242, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(lblNewLabel_1)
 									.addGap(18)
-									.addComponent(editClassNameTextField, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE)))
-							.addPreferredGap(ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(submitChangeButton)
-								.addComponent(submitDeleteButton))
-							.addGap(81)))
-					.addContainerGap())
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(72, Short.MAX_VALUE)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(59))
+									.addComponent(editClassNameTextField)))
+							.addPreferredGap(ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(submitDeleteButton, Alignment.TRAILING)
+								.addComponent(submitChangeButton, Alignment.TRAILING))
+							.addGap(69)))
+					.addGap(72))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(16)
+					.addGap(22)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(searchClassNameTextField, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel)
 						.addComponent(searchButton))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(editClassNameTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-						.addComponent(submitChangeButton))
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel_1)
+								.addComponent(editClassNameTextField, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(21)
+							.addComponent(submitChangeButton)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(39)
@@ -176,9 +188,9 @@ public class MealClassManageFrm extends JInternalFrame {
 							.addGap(18)
 							.addComponent(editClassInfoTextArea, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(31)
+							.addGap(36)
 							.addComponent(submitDeleteButton)))
-					.addGap(43))
+					.addGap(55))
 		);
 		
 		classListTable = new JTable();
@@ -189,13 +201,14 @@ public class MealClassManageFrm extends JInternalFrame {
 				selectedTableRow(me);
 			}
 		});
-		classListTable.setFont(new Font("宋体", Font.PLAIN, 12));
+		classListTable.setFont(new Font("宋体", Font.PLAIN, 16));
+		classListTable.setRowHeight(22);
 		classListTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				
 			},
 			new String[] {
-					"类别编号","类别名称" , "类别介绍", "操作"
+					"类别编号","类别名称" , "类别介绍"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {

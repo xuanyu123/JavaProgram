@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.java.model.Meal;
 
 public class MealDao extends BaseDao{
-	public boolean addStudent(Meal meal){
+	public boolean addMeal(Meal meal){
 		String sql = "insert into o_meal values(null,?,?,?,?)";
 		try {
 			java.sql.PreparedStatement preparedStatement = con.prepareStatement(sql);

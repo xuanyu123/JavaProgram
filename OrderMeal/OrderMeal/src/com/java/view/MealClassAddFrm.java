@@ -2,6 +2,7 @@ package com.java.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -53,7 +54,20 @@ public class MealClassAddFrm extends JInternalFrame {
 		setIconifiable(true);
 		setClosable(true);
 		setTitle("添加菜品类别");
-		setBounds(100, 100, 525, 351);
+		
+		
+		// 设置窗体大小
+		int windowsWedth = 525;
+		int windowsHeight = 351;
+		
+		// 得到显示器屏幕的宽高
+		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+		
+		//设置窗体在显示器居中显示
+		this.setBounds(300, 200, windowsWedth, windowsHeight);
+		
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

@@ -24,13 +24,14 @@ import com.java.dao.AdminDao;
 import com.java.model.Admin;
 import com.java.model.UserType;
 import com.java.util.StringUtil;
+import javax.swing.JPasswordField;
 
 public class LoginFrm extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField userNameTextField;
-	private JTextField passwordTextField;
 	private JComboBox userTypeComboBox;
+	private JPasswordField passwordTextField;
 
 	/**
 	 * Launch the application.
@@ -78,10 +79,6 @@ public class LoginFrm extends JFrame {
 		userNameTextField = new JTextField();
 		userNameTextField.setBounds(207, 103, 190, 30);
 		userNameTextField.setColumns(10);
-		
-		passwordTextField = new JTextField();
-		passwordTextField.setBounds(207, 156, 190, 30);
-		passwordTextField.setColumns(10);
 		
 		userTypeComboBox = new JComboBox();
 		userTypeComboBox.setBounds(210, 210, 131, 27);
@@ -131,8 +128,11 @@ public class LoginFrm extends JFrame {
 		contentPane.add(resetButton);
 		contentPane.add(registerButton);
 		contentPane.add(userTypeComboBox);
-		contentPane.add(passwordTextField);
 		contentPane.add(userNameTextField);
+		
+		passwordTextField = new JPasswordField();
+		passwordTextField.setBounds(207, 159, 190, 30);
+		contentPane.add(passwordTextField);
 	}
 
 	protected void registerAct(ActionEvent ae) {
