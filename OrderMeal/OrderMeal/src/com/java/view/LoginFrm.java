@@ -83,10 +83,10 @@ public class LoginFrm extends JFrame {
 		userTypeComboBox = new JComboBox();
 		userTypeComboBox.setBounds(210, 210, 131, 27);
 		userTypeComboBox.setFont(new Font("宋体", Font.PLAIN, 15));
-		userTypeComboBox.setModel(new DefaultComboBoxModel(new UserType[] {UserType.ADMIN, UserType.ORDCUSTOMER, UserType.VIPCUSTOMER, UserType.EMPLOYEE}));
+		userTypeComboBox.setModel(new DefaultComboBoxModel(new UserType[] {UserType.ADMIN, UserType.EMPLOYEE}));
 		
 		JButton loginButton = new JButton("登陆");
-		loginButton.setBounds(74, 266, 95, 30);
+		loginButton.setBounds(121, 267, 95, 30);
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				loginAct(ae);
@@ -96,7 +96,7 @@ public class LoginFrm extends JFrame {
 		loginButton.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/login.png")));
 		
 		JButton resetButton = new JButton("重置");
-		resetButton.setBounds(210, 266, 85, 30);
+		resetButton.setBounds(287, 267, 85, 30);
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				resetValue(ae);
@@ -104,16 +104,6 @@ public class LoginFrm extends JFrame {
 		});
 		resetButton.setFont(new Font("宋体", Font.PLAIN, 15));
 		resetButton.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/reset.png")));
-		
-		JButton registerButton = new JButton("注册用户");
-		registerButton.setBounds(329, 266, 119, 30);
-		registerButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				registerAct(ae);
-			}
-		});
-		registerButton.setFont(new Font("宋体", Font.PLAIN, 15));
-		registerButton.setIcon(new ImageIcon(LoginFrm.class.getResource("/images/register.png")));
 		
 		JLabel label_3 = new JLabel("用户类型：");
 		label_3.setBounds(103, 214, 95, 18);
@@ -126,19 +116,12 @@ public class LoginFrm extends JFrame {
 		contentPane.add(loginButton);
 		contentPane.add(label_3);
 		contentPane.add(resetButton);
-		contentPane.add(registerButton);
 		contentPane.add(userTypeComboBox);
 		contentPane.add(userNameTextField);
 		
 		passwordTextField = new JPasswordField();
 		passwordTextField.setBounds(207, 159, 190, 30);
 		contentPane.add(passwordTextField);
-	}
-
-	protected void registerAct(ActionEvent ae) {
-		// TODO Auto-generated method stub
-		
-		
 	}
 
 	protected void loginAct(ActionEvent ae) {
@@ -168,14 +151,10 @@ public class LoginFrm extends JFrame {
 				return;
 			}
 			JOptionPane.showMessageDialog(this, "欢迎【"+selectedItem.getName()+"】："+admin.getName() + "登录本系统！");
-			this.dispose();
-			new MainFrm(selectedItem, admin).setVisible(true);
-		}else if("VIP客户".equals(selectedItem.getName())) {
-			//VIP客户登陆
-		}else if("员工".equals(selectedItem.getName())) {
-			//员工登陆
+			this.dispose();   // 销毁当前窗口
+			new MainFrm(selectedItem, admin).setVisible(true);  // 显示主界面 
 		}else {
-			//普通客户登陆
+			//员工登陆
 		}
 	}
 

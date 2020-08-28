@@ -32,18 +32,18 @@ public class MainFrm extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MainFrm frame = new MainFrm(null, null);
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrm frame = new MainFrm(null, null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the frame.
@@ -119,7 +119,12 @@ public class MainFrm extends JFrame {
 		mntmNewMenuItem_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/add.png")));
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("菜单维护");
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("菜品管理");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				MealManageFrm(ae);
+			}
+		});
 		mntmNewMenuItem_3.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		mntmNewMenuItem_3.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		mnNewMenu_1.add(mntmNewMenuItem_3);
@@ -152,6 +157,15 @@ public class MainFrm extends JFrame {
 		mnNewMenu_2.setIcon(new ImageIcon(MainFrm.class.getResource("/images/cart.png")));
 		menuBar.add(mnNewMenu_2);
 		
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("点餐");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				orderMeal(e);
+			}
+		});
+		mntmNewMenuItem_7.setIcon(new ImageIcon(MainFrm.class.getResource("/images/order1.png")));
+		mnNewMenu_2.add(mntmNewMenuItem_7);
+		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("订单列表");
 		mntmNewMenuItem_4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/search1.png")));
 		mnNewMenu_2.add(mntmNewMenuItem_4);
@@ -183,9 +197,22 @@ public class MainFrm extends JFrame {
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 	}
 
+	protected void orderMeal(ActionEvent e) {
+		// 跳转点餐页面
+		OrderMealFrm orderMealFrm = new OrderMealFrm();
+		orderMealFrm.setVisible(true);
+		desktopPane.add(orderMealFrm);
+	}
+
+	protected void MealManageFrm(ActionEvent ae) {
+		// 跳转菜品管理界面
+		MealManageFrm mealManageFrm = new MealManageFrm();
+		mealManageFrm.setVisible(true);
+		desktopPane.add(mealManageFrm);
+	}
+
 	protected void addMeal(ActionEvent ae) {
-		// 添加菜品
-		// 添加菜品类别
+		// 跳转添加菜品界面
 		MealAddFrm mealAddFrm = new MealAddFrm();
 		mealAddFrm.setVisible(true);
 		desktopPane.add(mealAddFrm);
@@ -193,28 +220,28 @@ public class MainFrm extends JFrame {
 	}
 
 	protected void mealClassManage(ActionEvent ae) {
-		// 类别管理
+		// 跳转类别管理界面
 		MealClassManageFrm mealClassManageFrm = new MealClassManageFrm();
 		mealClassManageFrm.setVisible(true);
 		desktopPane.add(mealClassManageFrm);
 	}
 
 	protected void addMealClass(ActionEvent ae) {
-		// 添加菜品类别
+		// 跳转添加菜品类别界面
 		MealClassAddFrm mealClassAddFrm = new MealClassAddFrm();
 		mealClassAddFrm.setVisible(true);
 		desktopPane.add(mealClassAddFrm);
 	}
 
 	protected void changePassword(ActionEvent ae) {
-		// 修改密码
+		// 跳转修改密码界面
 		ChangePasswordFrm changePasswordFrm = new ChangePasswordFrm();
 		changePasswordFrm.setVisible(true);
 		desktopPane.add(changePasswordFrm);
 	}
 
 	protected void aboutUs(ActionEvent ae) {
-		// 关于我们
+		// 跳转关于我们界面
 		String infoString = "【餐厅点餐系统】\n";
 		infoString += "欢迎您";
 		JOptionPane.showMessageDialog(this, infoString);

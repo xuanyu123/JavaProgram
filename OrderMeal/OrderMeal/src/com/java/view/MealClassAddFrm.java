@@ -24,6 +24,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.awt.Font;
 
 public class MealClassAddFrm extends JInternalFrame {
 
@@ -73,15 +74,18 @@ public class MealClassAddFrm extends JInternalFrame {
 		setContentPane(contentPane);
 		
 		JLabel lblNewLabel = new JLabel("类别名称：");
+		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		lblNewLabel.setIcon(new ImageIcon(MealClassAddFrm.class.getResource("/images/classname.png")));
 		
 		classNameTextField = new JTextField();
 		classNameTextField.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("类别信息：");
+		lblNewLabel_1.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		lblNewLabel_1.setIcon(new ImageIcon(MealClassAddFrm.class.getResource("/images/classinfo.png")));
 		
 		JButton submitButton = new JButton("提交");
+		submitButton.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		submitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				submitMealClass(ae);
@@ -90,6 +94,7 @@ public class MealClassAddFrm extends JInternalFrame {
 		submitButton.setIcon(new ImageIcon(MealClassAddFrm.class.getResource("/images/confirm.png")));
 		
 		JButton resetButton = new JButton("重置");
+		resetButton.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				resetValue(ae);

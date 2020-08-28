@@ -1,7 +1,7 @@
 package com.java.model;
 
 public enum UserType {
-	ADMIN("系统管理员",0),ORDCUSTOMER("普通客户",1),VIPCUSTOMER("VIP客户",2),EMPLOYEE("员工",3);
+	ADMIN("系统管理员",0),EMPLOYEE("员工",1);
 	private String name;
 	private int index;
 	private UserType(String name, int index) {
