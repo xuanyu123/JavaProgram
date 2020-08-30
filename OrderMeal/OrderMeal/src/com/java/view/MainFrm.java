@@ -25,25 +25,25 @@ import javax.swing.JDesktopPane;
 public class MainFrm extends JFrame {
 
 	private JPanel contentPane;
-	private JDesktopPane desktopPane;
+	public static JDesktopPane desktopPane;
 	public static UserType userType;
 	public static Object userObject;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainFrm frame = new MainFrm(null, null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MainFrm frame = new MainFrm(null, null);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -65,9 +65,7 @@ public class MainFrm extends JFrame {
 		
 		//设置窗体在显示器居中显示
 		this.setBounds((width - windowsWedth) / 2, (height - windowsHeight) / 2, windowsWedth, windowsHeight);
-		
-//		setBounds(100, 100, 1204, 822);
-		
+				
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.WHITE);
@@ -166,11 +164,12 @@ public class MainFrm extends JFrame {
 		mntmNewMenuItem_7.setIcon(new ImageIcon(MainFrm.class.getResource("/images/order1.png")));
 		mnNewMenu_2.add(mntmNewMenuItem_7);
 		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("订单列表");
-		mntmNewMenuItem_4.setIcon(new ImageIcon(MainFrm.class.getResource("/images/search1.png")));
-		mnNewMenu_2.add(mntmNewMenuItem_4);
-		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("订单维护");
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("订单统计");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				OrderCount(e);
+			}
+		});
 		mntmNewMenuItem_5.setIcon(new ImageIcon(MainFrm.class.getResource("/images/edit.png")));
 		mnNewMenu_2.add(mntmNewMenuItem_5);
 		
@@ -195,6 +194,14 @@ public class MainFrm extends JFrame {
 		desktopPane = new JDesktopPane();
 		desktopPane.setBackground(new Color(255, 255, 255));
 		contentPane.add(desktopPane, BorderLayout.CENTER);
+	}
+
+	protected void OrderCount(ActionEvent e) {
+		// 订单统计页面
+		OrderCountFrm orderCountFrm = new OrderCountFrm();
+		orderCountFrm.setVisible(true);
+		desktopPane.add(orderCountFrm);
+		
 	}
 
 	protected void orderMeal(ActionEvent e) {

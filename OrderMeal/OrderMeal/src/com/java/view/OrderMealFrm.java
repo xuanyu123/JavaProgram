@@ -23,7 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.EmptyBorder;import javax.swing.plaf.basic.BasicTreeUI.TreeCancelEditingAction;
 import javax.swing.table.DefaultTableModel;
 
 import com.java.dao.ClassDao;
@@ -102,6 +102,7 @@ public class OrderMealFrm extends JInternalFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(MealManageFrm.class.getResource("/images/order3.png")));
 		
 		editMealNameTextField = new JTextField();
+		editMealNameTextField.setEditable(false);
 		editMealNameTextField.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("所属类别：");
@@ -113,6 +114,7 @@ public class OrderMealFrm extends JInternalFrame {
 		lblNewLabel_4.setIcon(new ImageIcon(MealManageFrm.class.getResource("/images/mealPrice.png")));
 		
 		editMealPriceTextField = new JTextField();
+		editMealPriceTextField.setEditable(false);
 		editMealPriceTextField.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("菜品介绍：");
@@ -137,9 +139,13 @@ public class OrderMealFrm extends JInternalFrame {
 		btnNewButton_1.setIcon(new ImageIcon(OrderMealFrm.class.getResource("/images/classadd.png")));
 		
 		JButton btnNewButton_2 = new JButton("订单结算");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					orderPay(e);
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				closeThis();
+				OrderPayFrm orderPayFrm = new OrderPayFrm();
+				orderPayFrm.setVisible(true);
+				MainFrm.desktopPane.add(orderPayFrm);
 			}
 		});
 		btnNewButton_2.setIcon(new ImageIcon(OrderMealFrm.class.getResource("/images/seeOrder.png")));
@@ -152,11 +158,44 @@ public class OrderMealFrm extends JInternalFrame {
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(72)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(74)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(20)
+							.addGap(9)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 757, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(10)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblNewLabel_6)
+											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(editAmountTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblNewLabel_2)
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addComponent(editMealNameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblNewLabel_4)
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addComponent(editMealPriceTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+									.addGap(48)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblNewLabel_3)
+											.addGap(18)
+											.addComponent(editMealClassComboBox, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(lblNewLabel_5)
+											.addGap(18)
+											.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)))
+									.addGap(43)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnNewButton_2)
+										.addComponent(btnNewButton_1))))
+							.addGap(11))
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addComponent(lblNewLabel)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(mealNameTextField, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
@@ -167,43 +206,13 @@ public class OrderMealFrm extends JInternalFrame {
 							.addGap(18)
 							.addComponent(searchButton)
 							.addGap(18)
-							.addComponent(btnNewButton))
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 757, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(10)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addComponent(lblNewLabel_6)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(editAmountTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNewLabel_2)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(editMealNameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNewLabel_4)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(editMealPriceTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-							.addGap(48)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNewLabel_3)
-									.addGap(18)
-									.addComponent(editMealClassComboBox, GroupLayout.PREFERRED_SIZE, 170, GroupLayout.PREFERRED_SIZE))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(lblNewLabel_5)
-									.addGap(18)
-									.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)))
-							.addGap(43)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnNewButton_2)
-								.addComponent(btnNewButton_1))))
-					.addGap(67))
+							.addComponent(btnNewButton)))
+					.addContainerGap(85, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(63, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(50)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel)
 						.addComponent(mealNameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -211,7 +220,7 @@ public class OrderMealFrm extends JInternalFrame {
 						.addComponent(mealClassComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(searchButton)
 						.addComponent(btnNewButton))
-					.addGap(18)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 231, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -237,10 +246,11 @@ public class OrderMealFrm extends JInternalFrame {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(36)
 							.addComponent(btnNewButton_2)))
-					.addGap(32))
+					.addContainerGap(62, Short.MAX_VALUE))
 		);
 		
 		editMealInfoTextArea = new JTextArea();
+		editMealInfoTextArea.setEditable(false);
 		editMealInfoTextArea.setWrapStyleWord(true);
 		editMealInfoTextArea.setLineWrap(true);
 		scrollPane_1.setViewportView(editMealInfoTextArea);
@@ -264,7 +274,7 @@ public class OrderMealFrm extends JInternalFrame {
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, false, false
+				false, false, false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -277,11 +287,8 @@ public class OrderMealFrm extends JInternalFrame {
 		setTable(new Meal());
 	}
 
-	// 跳转到订单结算页面
-	protected void orderPay(ActionEvent e) {
-		this.dispose();
-		OrderPayFrm orderPayFrm = new OrderPayFrm();
-		orderPayFrm.setVisible(true);
+	protected void closeThis() {
+		this.setVisible(false);
 	}
 
 	// 将选中菜品添加到订单中
@@ -296,16 +303,19 @@ public class OrderMealFrm extends JInternalFrame {
 		String mealPrice = editMealPriceTextField.getText().toString();
 		Float price = Float.parseFloat(mealPrice);
 		String amountString = editAmountTextField.getText().toString();
-		Integer amount = Integer.parseInt(amountString);
-		
+		Integer amount = null;
+		if (!StringUtil.isEmpty(amountString)) {
+			amount = Integer.parseInt(amountString);
+		}
+		Float totalMoney = (Float) (amount * price);
 		OrderMid orderMid = new OrderMid();
 		orderMid.setOrderName(mealName);
 		orderMid.setOrderPrice(price);
 		orderMid.setOrderAmount(amount);
+		orderMid.setTotalMoney(totalMoney);
 		
 		MealClass mc = (MealClass)editMealClassComboBox.getSelectedItem();
 		orderMid.setClassId(mc.getId());
-//		orderMid.setId(Integer.parseInt(mealListTable.getValueAt(row, 0).toString()));
 
 		OrderDao orderDao = new OrderDao();
 		if(orderDao.addOrderMid(orderMid)){
@@ -330,6 +340,7 @@ public class OrderMealFrm extends JInternalFrame {
 				editMealClassComboBox.setSelectedIndex(i);
 			}
 		}
+		editAmountTextField.setText("1");
 	}
 
 	// 清空查询条件，显示所有

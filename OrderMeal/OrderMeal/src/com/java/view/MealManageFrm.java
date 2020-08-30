@@ -274,7 +274,6 @@ public class MealManageFrm extends JInternalFrame {
 		}
 		mealDao.closeDao();
 		setTable(new Meal());
-		
 	}
 
 	// 修改菜品信息
