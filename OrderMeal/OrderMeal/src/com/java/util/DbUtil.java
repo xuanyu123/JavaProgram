@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 
 public class DbUtil {
-	private String dbUrl="jdbc:mysql://47.93.4.32:3306/ordermeal?useUnicode=true&characterEncoding=utf-8"; //数据库连接地址
-	private String dbUserName="root";  //数据库用户名
-	private String dbPassword="wxy187350"; //数据库密码
+	private String dbUrl="jdbc:mysql://localhost:3306/ordermeal?useUnicode=true&characterEncoding=utf-8"; //数据库连接地址
+	private String dbUserName="你的数据库用户名";  //数据库用户名
+	private String dbPassword="你的数据库密码"; //数据库密码
 	private String jdbcName="com.mysql.jdbc.Driver";  //驱动名称
 	/**
 	 * 建立数据库连接
